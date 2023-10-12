@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=icu.qimuu.qiapisdk.config.QiApiClientConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.lfg.xlapisdk.config.XlApiClientConfig
