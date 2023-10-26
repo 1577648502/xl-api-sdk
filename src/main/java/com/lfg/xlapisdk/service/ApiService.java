@@ -1,7 +1,7 @@
 package com.lfg.xlapisdk.service;
 
 import cn.hutool.http.HttpResponse;
-import com.lfg.xlapisdk.client.QiApiClient;
+import com.lfg.xlapisdk.client.XlApiClient;
 import com.lfg.xlapisdk.exception.ApiException;
 import com.lfg.xlapisdk.model.request.*;
 import com.lfg.xlapisdk.model.response.LoveResponse;
@@ -11,7 +11,7 @@ import com.lfg.xlapisdk.model.response.ResultResponse;
 
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年09月17日 08:34
  * @Version: 1.0
  * @Description:
@@ -30,12 +30,12 @@ public interface ApiService {
     /**
      * 通用请求
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @param request     要求
      * @return {@link T}
      * @throws ApiException 业务异常
      */
-    <O, T extends ResultResponse> T request(QiApiClient qiApiClient, BaseRequest<O, T> request) throws ApiException;
+    <O, T extends ResultResponse> T request(XlApiClient xlApiClient, BaseRequest<O, T> request) throws ApiException;
 
 
     /**
@@ -49,11 +49,11 @@ public interface ApiService {
     /**
      * 喝毒鸡汤
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @return {@link PoisonousChickenSoupResponse}
      * @throws ApiException 业务异常
      */
-    PoisonousChickenSoupResponse getPoisonousChickenSoup(QiApiClient qiApiClient) throws ApiException;
+    PoisonousChickenSoupResponse getPoisonousChickenSoup(XlApiClient xlApiClient) throws ApiException;
 
     /**
      * 获取随机壁纸
@@ -67,12 +67,12 @@ public interface ApiService {
     /**
      * 获取随机壁纸
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @param request     要求
      * @return {@link RandomWallpaperResponse}
      * @throws ApiException 业务异常
      */
-    RandomWallpaperResponse getRandomWallpaper(QiApiClient qiApiClient, RandomWallpaperRequest request) throws ApiException;
+    RandomWallpaperResponse getRandomWallpaper(XlApiClient xlApiClient, RandomWallpaperRequest request) throws ApiException;
 
     /**
      * 随意情话
@@ -85,11 +85,11 @@ public interface ApiService {
     /**
      * 随意情话
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @return {@link LoveResponse}
      * @throws ApiException 业务异常
      */
-    LoveResponse randomLoveTalk(QiApiClient qiApiClient) throws ApiException;
+    LoveResponse randomLoveTalk(XlApiClient xlApiClient) throws ApiException;
 
     /**
      * 星座运势
@@ -103,22 +103,22 @@ public interface ApiService {
     /**
      * 星座运势
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @param request     要求
      * @return {@link ResultResponse}
      * @throws ApiException 业务异常
      */
-    ResultResponse horoscope(QiApiClient qiApiClient, HoroscopeRequest request) throws ApiException;
+    ResultResponse horoscope(XlApiClient xlApiClient, HoroscopeRequest request) throws ApiException;
 
     /**
      * 获取ip信息
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @param request     要求
      * @return {@link ResultResponse}
      * @throws ApiException 业务异常
      */
-    ResultResponse getIpInfo(QiApiClient qiApiClient, IpInfoRequest request) throws ApiException;
+    ResultResponse getIpInfo(XlApiClient xlApiClient, IpInfoRequest request) throws ApiException;
 
     /**
      * 获取ip信息
@@ -132,12 +132,12 @@ public interface ApiService {
     /**
      * 获取天气信息
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @param request     要求
      * @return {@link ResultResponse}
      * @throws ApiException 业务异常
      */
-    ResultResponse getWeatherInfo(QiApiClient qiApiClient, WeatherRequest request) throws ApiException;
+    ResultResponse getWeatherInfo(XlApiClient xlApiClient, WeatherRequest request) throws ApiException;
 
     /**
      * 获取天气信息

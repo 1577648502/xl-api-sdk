@@ -1,6 +1,6 @@
 package com.lfg.xlapisdk.service.impi;
 
-import com.lfg.xlapisdk.client.QiApiClient;
+import com.lfg.xlapisdk.client.XlApiClient;
 import com.lfg.xlapisdk.exception.ApiException;
 import com.lfg.xlapisdk.model.request.*;
 import com.lfg.xlapisdk.model.response.LoveResponse;
@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年09月17日 08:42
  * @Version: 1.0
  * @Description:
@@ -28,9 +28,9 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public PoisonousChickenSoupResponse getPoisonousChickenSoup(QiApiClient qiApiClient) throws ApiException {
+    public PoisonousChickenSoupResponse getPoisonousChickenSoup(XlApiClient xlApiClient) throws ApiException {
         PoisonousChickenSoupRequest request = new PoisonousChickenSoupRequest();
-        return request(qiApiClient, request);
+        return request(xlApiClient, request);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public RandomWallpaperResponse getRandomWallpaper(QiApiClient qiApiClient, RandomWallpaperRequest request) throws ApiException {
-        return request(qiApiClient, request);
+    public RandomWallpaperResponse getRandomWallpaper(XlApiClient xlApiClient, RandomWallpaperRequest request) throws ApiException {
+        return request(xlApiClient, request);
     }
 
     @Override
@@ -50,9 +50,9 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public LoveResponse randomLoveTalk(QiApiClient qiApiClient) throws ApiException {
+    public LoveResponse randomLoveTalk(XlApiClient xlApiClient) throws ApiException {
         LoveRequest request = new LoveRequest();
-        return request(qiApiClient, request);
+        return request(xlApiClient, request);
     }
 
     @Override
@@ -61,13 +61,13 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public ResultResponse horoscope(QiApiClient qiApiClient, HoroscopeRequest request) throws ApiException {
-        return request(qiApiClient, request);
+    public ResultResponse horoscope(XlApiClient xlApiClient, HoroscopeRequest request) throws ApiException {
+        return request(xlApiClient, request);
     }
 
     @Override
-    public ResultResponse getIpInfo(QiApiClient qiApiClient, IpInfoRequest request) throws ApiException {
-        return request(qiApiClient, request);
+    public ResultResponse getIpInfo(XlApiClient xlApiClient, IpInfoRequest request) throws ApiException {
+        return request(xlApiClient, request);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public ResultResponse getWeatherInfo(QiApiClient qiApiClient, WeatherRequest request) throws ApiException {
-        return request(qiApiClient, request);
+    public ResultResponse getWeatherInfo(XlApiClient xlApiClient, WeatherRequest request) throws ApiException {
+        return request(xlApiClient, request);
     }
 
     @Override

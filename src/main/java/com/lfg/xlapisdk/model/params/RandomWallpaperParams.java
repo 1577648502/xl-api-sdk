@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023/09/18 05:39:26
  * @Version: 1.0
  * @Description: 随机壁纸参数

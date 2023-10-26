@@ -3,7 +3,7 @@ package com.lfg.xlapisdk.exception;
 import lombok.Data;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年09月18日 21:52
  * @Version: 1.0
  * @Description:

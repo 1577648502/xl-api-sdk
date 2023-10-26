@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023/09/22 10:11:04
  * @Version: 1.0
  * @Description: 获取天气请求参数

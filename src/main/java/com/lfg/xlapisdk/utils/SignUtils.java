@@ -4,10 +4,10 @@ import cn.hutool.crypto.digest.MD5;
 import cn.hutool.json.JSONUtil;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年08月16日 12:22
  * @Version: 1.0
- * @Description:
+ * @Description: 返回md5加密后的参数
  */
 public class SignUtils {
     public static String getSign(String body, String secretKey) {

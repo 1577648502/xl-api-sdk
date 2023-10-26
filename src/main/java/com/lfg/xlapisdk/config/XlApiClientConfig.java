@@ -1,6 +1,6 @@
 package com.lfg.xlapisdk.config;
 
-import com.lfg.xlapisdk.client.QiApiClient;
+import com.lfg.xlapisdk.client.XlApiClient;
 import com.lfg.xlapisdk.service.impi.ApiServiceImpl;
 import com.lfg.xlapisdk.service.ApiService;
 import lombok.Data;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年08月17日 21:09
  * @Version: 1.0
  * @Description:
@@ -37,14 +37,14 @@ public class XlApiClientConfig {
     private String host;
 
     @Bean
-    public QiApiClient qiApiClient() {
-        return new QiApiClient(accessKey, secretKey);
+    public XlApiClient qiApiClient() {
+        return new XlApiClient(accessKey, secretKey);
     }
 
     @Bean
     public ApiService apiService() {
         ApiServiceImpl apiService = new ApiServiceImpl();
-        apiService.setQiApiClient(new QiApiClient(accessKey, secretKey));
+        apiService.setXlApiClient(new XlApiClient(accessKey, secretKey));
         if (StringUtils.isNotBlank(host)) {
             apiService.setGatewayHost(host);
         }

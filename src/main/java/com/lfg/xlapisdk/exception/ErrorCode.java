@@ -3,7 +3,7 @@ package com.lfg.xlapisdk.exception;
 /**
  * 同一返回错误码
  *
- * @author QiMu
+ * @author XiaoLiu
  */
 public enum ErrorCode {
 

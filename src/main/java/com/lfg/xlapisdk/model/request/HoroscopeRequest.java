@@ -7,7 +7,7 @@ import com.lfg.xlapisdk.model.params.HoroscopeParams;
 import lombok.experimental.Accessors;
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年09月17日 08:38
  * @Version: 1.0
  * @Description: 随机情话

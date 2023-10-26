@@ -1,15 +1,15 @@
 <p align="center">
-    <img src=https://img.qimuu.icu/typory/logo.gif width=188/>
+    <img src=http://110.41.132.124:9000/public/KgKkdTOM-WX20230508-175957%402x.png width=188/>
 </p>
 
-<h1 align="center">Qi-API-SDK</h1>
-<p align="center"><strong>Qi-API 接口开放平台开发者工具包</strong></p>
+<h1 align="center">Xl-API-SDK</h1>
+<p align="center"><strong>Xl-API 接口开放平台开发者工具包</strong></p>
 
 <div align="center">
     <img alt="Maven" src="https://raster.shields.io/badge/Maven-3.8.1-red.svg"/>
    <img alt="SpringBoot" src="https://raster.shields.io/badge/SpringBoot-2.7+-green.svg"/>
-  <a href="https://github.com/qimu666/qi-api-sdk" target="_blank"><img src='https://img.shields.io/github/forks/qimu666/qi-api-sdk' alt='GitHub forks' class="no-zoom"></a>
-  <a href="https://github.com/qimu666/qi-api-sdk" target="_blank"><img src='https://img.shields.io/github/stars/qimu666/qi-api-sdk' alt='GitHub stars' class="no-zoom"></a>
+  <a href="https://github.com/1577648502/xl-api-sdk" target="_blank"><img src='https://img.shields.io/github/forks/1577648502/xl-api-sdk' alt='GitHub forks' class="no-zoom"></a>
+  <a href="https://github.com/1577648502/xl-api-sdk" target="_blank"><img src='https://img.shields.io/github/stars/1577648502/xl-api-sdk' alt='GitHub stars' class="no-zoom"></a>
 </div>
 ### 目录结构 📝
 
@@ -30,44 +30,34 @@ qiapisdk
 
 ### 导航 🧭
 
-- **[Qi-API 接口开放平台 🔗](https://api.qimuu.icu/)**
-- **[Qi-API-DOC 开发者文档 📖](https://doc.qimuu.icu/)**
-- **[Qi-API-SDK-demo ✔️](https://github.com/qimu666/qi-api-sdk-demo/blob/master/src/main/java/icu/qimuu/qiapisdkdemo/controller/InvokeController.java)**
+- **[Xl-API 接口开放平台 🔗](http://110.41.132.124:88)**
+- **[Xl-API-DOC 开发者文档 📖](http://110.41.132.124:89)**
 
 ###  快速开始 🚀
 
-**要开始使用 Qi-API-SDK，您需要按照以下简单进行操作:**
+**要开始使用 Xl-API-SDK，您需要按照以下简单进行操作:**
 
 #### 1. 引入依赖坐标
 
 ```xml
 <dependency>
-   <groupId>icu.qimuu</groupId>
-   <artifactId>qi-api-sdk</artifactId>
-   <version>0.0.4</version>
+   <groupId>com.lfg</groupId>
+   <artifactId>xl-api-sdk</artifactId>
+   <version>0.0.1</version>
 </dependency>   
 ```
 
-**可以搭配[EasyWeb](https://github.com/qimu666/EasyWeb)依赖快速启动Web项目**
 
-```xml
-  <dependency>
-     <groupId>icu.qimuu</groupId>
-     <artifactId>EasyWeb</artifactId>
-     <version>0.0.6</version>
-  </dependency>
-```
+#### 2. 前往[Xl-API 接口开放平台](http://110.41.132.124:88) 获取开发者密钥对
 
-#### 2. 前往[Qi-API 接口开放平台](https://api.qimuu.icu/) 获取开发者密钥对
-
-#### 3. 初始化客户端QiApiClient对象
+#### 3. 初始化客户端XlApiClient对象
 
 - 方法 1 ：主动实例化客户端
 
   ```java
   String accessKey = "你的 accessKey";
   String secretKey = "你的 secretKey";
-  QiApiClient client = new QiApiClient(accessKey, secretKey);
+  XlApiClient client = new XlApiClient(accessKey, secretKey);
   ```
 
 - 方法 2 ：通过配置文件注入对象
@@ -75,7 +65,7 @@ qiapisdk
   - yml
 
     ```yml
-    # Qi-API 配置
+    # Xl-API 配置
     qi:
       api:
         client:
@@ -117,8 +107,8 @@ try {
 - 示例二 ：主动注入
 ```java
 try {
-    QiApiClient qiApiClient = new QiApiClient("你的 accessKey", "你的 secretKey");
-    PoisonousChickenSoupResponse poisonousChickenSoup = apiService.getPoisonousChickenSoup(qiApiClient);
+    XlApiClient xlApiClient = new XlApiClient("你的 accessKey", "你的 secretKey");
+    PoisonousChickenSoupResponse poisonousChickenSoup = apiService.getPoisonousChickenSoup(xlApiClient);
     System.out.println("poisonousChickenSoup = " + poisonousChickenSoup);
 } catch (ApiException e) {
     log.error(e.getMessage());
@@ -133,41 +123,14 @@ try {
 }
 ```
 
-**搭配[EasyWeb](https://github.com/qimu666/EasyWeb)示例：推荐👍**
-
-```java
-@GetMapping("/getPoisonousChickenSoup")
-public BaseResponse<PoisonousChickenSoupResponse> getPoisonousChickenSoup() {
-        PoisonousChickenSoupResponse poisonousChickenSoup = null;
-        try {
-        poisonousChickenSoup = apiService.getPoisonousChickenSoup();
-        } catch (ApiException e) {
-        throw new ApiException(e.getCode(), e.getMessage());
-        }
-        return ResultUtils.success(poisonousChickenSoup);
-        }
-```
-
-响应示例：
-
-```json
-{
-  "code": 0,
-  "data": {
-    "text": "人类三大错觉—手机响了，有人敲门，他（她）喜欢我。"
-  },
-  "message": "ok"
-}
-```
-- **更多示例详见：[Qi-API-SDK-Demo 示例项目](https://github.com/qimu666/qi-api-sdk-demo/blob/master/src/main/java/icu/qimuu/qiapisdkdemo/controller/InvokeController.java)**
-- **更多接口详见：[Qi-API-DOC 开发者文档](https://doc.qimuu.icu/)**
+- **更多接口详见：[Xl-API-DOC 开发者文档](http://110.41.132.124:89)**
 
 ### 贡献 🤝
 
-如果您想为 **[Qi-API 接口开放平台](https://api.qimuu.icu/)**  做出贡献，请随时提交拉取请求。我们始终在寻找方法来改进项目，使其对像您这样的开发者更有用。
+如果您想为 **[Xl-API 接口开放平台](http://110.41.132.124:88)**  做出贡献，请随时提交拉取请求。我们始终在寻找方法来改进项目，使其对像您这样的开发者更有用。
 
 ### 联系我们 📩
 
-如果您对 **[Qi-API 接口开放平台](https://api.qimuu.icu/)**  平台有任何问题或建议，请随时联系我们:📩邮箱：2483482026@qq.com。
+如果您对 **[Xl-API 接口开放平台](http://110.41.132.124:88)**  平台有任何问题或建议，请随时联系我们:📩邮箱：1577648502@qq.com。
 
-感谢您使用 **[Qi-API 接口开放平台](https://api.qimuu.icu/)**  ！ 😊
+感谢您使用 **[Xl-API 接口开放平台](http://110.41.132.124:88)**  ！ 😊

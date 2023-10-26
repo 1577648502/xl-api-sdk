@@ -7,7 +7,7 @@ import cn.hutool.json.JSONUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.lfg.xlapisdk.client.QiApiClient;
+import com.lfg.xlapisdk.client.XlApiClient;
 import com.lfg.xlapisdk.exception.ApiException;
 import com.lfg.xlapisdk.exception.ErrorCode;
 import com.lfg.xlapisdk.exception.ErrorResponse;
@@ -24,7 +24,7 @@ import java.util.Map;
 
 
 /**
- * @Author: QiMu
+ * @Author: XiaoLiu
  * @Date: 2023年09月19日 11:03
  * @Version: 1.0
  * @Description:
@@ -32,7 +32,7 @@ import java.util.Map;
 @Slf4j
 @Data
 public abstract class BaseService implements ApiService {
-    private QiApiClient qiApiClient;
+    private XlApiClient xlApiClient;
     /**
      * 网关HOST
      */
@@ -41,15 +41,15 @@ public abstract class BaseService implements ApiService {
     /**
      * 检查配置
      *
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @throws ApiException 业务异常
      */
-    public void checkConfig(QiApiClient qiApiClient) throws ApiException {
-        if (qiApiClient == null && this.getQiApiClient() == null) {
+    public void checkConfig(XlApiClient xlApiClient) throws ApiException {
+        if (xlApiClient == null && this.getXlApiClient() == null) {
             throw new ApiException(ErrorCode.NO_AUTH_ERROR, "请先配置密钥AccessKey/SecretKey");
         }
-        if (qiApiClient != null && !StringUtils.isAnyBlank(qiApiClient.getAccessKey(), qiApiClient.getSecretKey())) {
-            this.setQiApiClient(qiApiClient);
+        if (xlApiClient != null && !StringUtils.isAnyBlank(xlApiClient.getAccessKey(), xlApiClient.getSecretKey())) {
+            this.setXlApiClient(xlApiClient);
         }
     }
 
@@ -107,7 +107,7 @@ public abstract class BaseService implements ApiService {
                 throw new ApiException(ErrorCode.OPERATION_ERROR, "不支持该请求");
             }
         }
-        return httpRequest.addHeaders(getHeaders(JSONUtil.toJsonStr(request), qiApiClient)).body(JSONUtil.toJsonStr(request.getRequestParams()));
+        return httpRequest.addHeaders(getHeaders(JSONUtil.toJsonStr(request), xlApiClient)).body(JSONUtil.toJsonStr(request.getRequestParams()));
     }
 
     /**
@@ -118,7 +118,7 @@ public abstract class BaseService implements ApiService {
      * @throws ApiException 业务异常
      */
     public <O, T extends ResultResponse> T res(BaseRequest<O, T> request) throws ApiException {
-        if (qiApiClient == null || StringUtils.isAnyBlank(qiApiClient.getAccessKey(), qiApiClient.getSecretKey())) {
+        if (xlApiClient == null || StringUtils.isAnyBlank(xlApiClient.getAccessKey(), xlApiClient.getSecretKey())) {
             throw new ApiException(ErrorCode.NO_AUTH_ERROR, "请先配置密钥AccessKey/SecretKey");
         }
         T rsp;
@@ -181,16 +181,16 @@ public abstract class BaseService implements ApiService {
      * 获取请求头
      *
      * @param body        请求体
-     * @param qiApiClient qi api客户端
+     * @param xlApiClient xl api客户端
      * @return {@link Map}<{@link String}, {@link String}>
      */
-    private Map<String, String> getHeaders(String body, QiApiClient qiApiClient) {
+    private Map<String, String> getHeaders(String body, XlApiClient xlApiClient) {
         Map<String, String> hashMap = new HashMap<>(4);
-        hashMap.put("accessKey", qiApiClient.getAccessKey());
+        hashMap.put("accessKey", xlApiClient.getAccessKey());
         String encodedBody = SecureUtil.md5(body);
         hashMap.put("body", encodedBody);
         hashMap.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000));
-        hashMap.put("sign", SignUtils.getSign(encodedBody, qiApiClient.getSecretKey()));
+        hashMap.put("sign", SignUtils.getSign(encodedBody, xlApiClient.getSecretKey()));
         return hashMap;
     }
 
@@ -204,8 +204,8 @@ public abstract class BaseService implements ApiService {
     }
 
     @Override
-    public <O, T extends ResultResponse> T request(QiApiClient qiApiClient, BaseRequest<O, T> request) throws ApiException {
-        checkConfig(qiApiClient);
+    public <O, T extends ResultResponse> T request(XlApiClient xlApiClient, BaseRequest<O, T> request) throws ApiException {
+        checkConfig(xlApiClient);
         return request(request);
     }
 }
